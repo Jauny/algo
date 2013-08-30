@@ -27,3 +27,18 @@ def bubble_sort!(array)
   end
   array
 end
+
+# tests
+array1 = [1,2,3,4]
+puts "Array #{array1} should stay sorted."
+puts bubble_sort(array1) == array1
+puts "---"
+
+array2 = [4,3,2,1]
+puts "Array #{array2} should be sorted."
+puts bubble_sort(array2) == [1,2,3,4]
+puts "---"
+
+array3 = [2352345, 54453532, 45646546, 767889867, 896754, 433, 2342342, 333]
+puts "Array #{array3} should be sorted."
+puts bubble_sort(array3) == [333, 433, 896754, 2342342, 2352345, 45646546, 54453532, 767889867]

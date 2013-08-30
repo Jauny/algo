@@ -1,6 +1,7 @@
 # Insertion sort work really well for almost sorted list
 # Finds next element that needs to be sorted
 # and puts it where it belongs among already sorted elements.
+# O(n^2)
 
 # destructive
 def insertion_sort!(array)
