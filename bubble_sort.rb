@@ -3,7 +3,7 @@
 # and swap two adjacent elements whenever the first is greater than the last.
 # O(n^2)
 
-# non destructive
+# non-destructive
 def bubble_sort(array)
   clone = array.clone
   clone.length.times do |i|
