@@ -7,30 +7,38 @@
 # dependency_first[i] must be before dependency_second[i]
 
 class DoubleDepSort
-  def sort_tasks(dep_first, dep_second, num_of_tasks)
-    tasks = (1..num_of_tasks).to_a
-    pairs = dep_first.zip(dep_second)
-    dependencies_hash = {}
-    pairs.each do |a, b|
-      dependencies_hash[a] ||= []
-      dependencies_hash[a] << b
+  class << self
+    def sort_tasks(dep_first, dep_second, num_of_tasks)
+      tasks = (1..num_of_tasks).to_a
+      pairs = dep_first.zip(dep_second)
+      dependencies_hash = {}
+      pairs.each do |a, b|
+        dependencies_hash[a] ||= []
+        dependencies_hash[a] << b
+      end
+
+      new_tasks = tasks.sort do |a,b|
+        compare(a, b, dependencies_hash)
+      end
     end
 
-    puts "sorting #{tasks} with #{dependencies_hash}..."
-
-    tasks.sort! do |a,b|
-      compare(a, b, dependencies_hash)
-    end
-
-    return "tasks sorted: #{tasks}"
-  end
-
-  private
-  def compare(a, b, hash)
-    if hash[a] && hash[a].include?(b)
-      return -1
-    else
-      return 1
+    private
+    def compare(a, b, hash)
+      if hash[a] && hash[a].include?(b)
+        return -1
+      else
+        return 1
+      end
     end
   end
 end
+
+# tests
+dep_first = [3, 6, 8]
+dep_second = [4, 7, 9]
+
+puts "dep_first: #{dep_first}"
+puts "dep_second: #{dep_second}"
+
+result = DoubleDepSort::sort_tasks(dep_first, dep_second, 10)
+p result
