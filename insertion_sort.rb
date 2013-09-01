@@ -42,3 +42,9 @@ puts "---"
 array3 = [2352345, 54453532, 45646546, 767889867, 896754, 433, 2342342, 333]
 puts "Array #{array3} should be sorted."
 puts insertion_sort(array3) == [333, 433, 896754, 2342342, 2352345, 45646546, 54453532, 767889867]
+puts "---"
+
+array4 = []
+1000.times { array4 << rand(1000) }
+puts "Array4 #{array4} should be sorted."
+puts insertion_sort(array4) == array4.sort
