@@ -30,3 +30,16 @@ print_matrix spiral(5)
 # 14 23 24 19 6
 # 13 22 21 20 7
 # 12 11 10  9 8
+
+##############################
+# Refactor, thanks Mr. Farmer!
+# Takes an array = [[1,2,3],
+#                   [8,9,4],
+#                   [7,6,5]]
+def spiral(array)
+  return [] if array.empty?
+
+  first, *rest = *array
+
+  return first + spiral(rest.transpose.reverse)
+end
