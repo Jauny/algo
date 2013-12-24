@@ -10,7 +10,7 @@
 * __Worst__   O(n)
 
 ### Algorithm
-#### Date
+#### Data
 * a collection c
 * a hash table a
 * a hashing function to_hash()
