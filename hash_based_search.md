@@ -24,7 +24,7 @@ def to_hash(el)
 end
 ```
 
-#### 2. Generate hash table
+#### 2. Generate hash table from collection
 ```ruby
 def generate_table(c)
   a = Hash.new
