@@ -9,6 +9,9 @@
 * __Average__ O(1)
 * __Worst__   O(n)
 
+As the size of the hash table doubles, the time to find an item decreases, because the lists of elements for each key are shorter.
+Because a hash table can usually grow enough to ensure that all lists are small, its search performance is considered O(1).
+
 ### Algorithm
 #### Data
 * a collection c
@@ -50,4 +53,4 @@ def hash_based_search(a, t)
 end
 ```
 
-_Here, sequetial search is used on the corresponding bin because the number of values is normally small enough._
+_Here, sequetial search is used on the corresponding bin because the hash table can usually grow large enough to ensure that all lists will be small, hence offer a O(1) performance._
