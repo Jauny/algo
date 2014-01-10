@@ -2,10 +2,10 @@
 # .. in progress ..
 
 class Node
-  attr_accessor :value, :left, :right
+  attr_accessor :value, :left, :right, :parent
 
-  def initialize(value=nil, left=nil, right=nil)
-    @value, @left, @right = value, left, right
+  def initialize(value=nil, left=nil, right=nil, parent=nil)
+    @value, @left, @right, @parent = value, left, right, parent
   end
 end
 
@@ -22,12 +22,14 @@ class BinarySearchTree
         add_node(node, start.left)
       else
         start.left = node
+        node.parent = start.left
       end
     elsif node.value > start.value
       if start.right
         add_node(node, start.right)
       else
         start.right = node
+        node.parent = start.right
       end
     end
   end
@@ -60,6 +62,19 @@ class BinarySearchTree
   def maximum(start=root)
     return start if !start.right
     maximum(start.right)
+  end
+
+  def successor(node)
+    if node.right
+      minimum(node.right)
+    else
+      y = node.parent
+      while y && node == y.right
+        node = y
+        y = y.parent
+      end
+      y
+    end
   end
 end
 
