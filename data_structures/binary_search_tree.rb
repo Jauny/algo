@@ -76,6 +76,14 @@ class BinarySearchTree
       y
     end
   end
+
+  def inorder_tree_walk(node=root)
+    if node
+      inorder_tree_walk(node.left)
+      puts node.value
+      inorder_tree_walk(node.right)
+    end
+  end
 end
 
 # tests
