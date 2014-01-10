@@ -10,10 +10,10 @@ class DoubleDepSort
   class << self
     def sort_tasks(dep_first, dep_second, num_of_tasks)
       tasks = (1..num_of_tasks).to_a
+
       pairs = dep_first.zip(dep_second)
-      dependencies_hash = {}
+      dependencies_hash = Hash.new([])
       pairs.each do |a, b|
-        dependencies_hash[a] ||= []
         dependencies_hash[a] << b
       end
 
