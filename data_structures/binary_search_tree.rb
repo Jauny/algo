@@ -21,15 +21,13 @@ class BinarySearchTree
       if start.left
         add_node(node, start.left)
       else
-        start.left = node
-        node.parent = start.left
+        start.left, node.parent = node, start.left
       end
     elsif node.value > start.value
       if start.right
         add_node(node, start.right)
       else
-        start.right = node
-        node.parent = start.right
+        start.right, node.parent = node, start.right
       end
     end
   end
@@ -99,8 +97,7 @@ class BinarySearchTree
     else
       y = node.parent
       while y && node == y.right
-        node = y
-        y = y.parent
+        node, y = y, y.parent
       end
       y
     end
