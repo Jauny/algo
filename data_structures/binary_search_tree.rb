@@ -34,6 +34,35 @@ class BinarySearchTree
     end
   end
 
+  def delete(node)
+    if node.left.nil?
+      transplant(node, node.right)
+    elsif node.right.nil?
+      transplant(node, node.left)
+    else
+      y = minimum(node.right)
+      unless y.parent == node
+        transplant(y, y.right)
+        y.right, y.right.p = node.right, y
+
+      transplant(node, y)
+      y.left, y.left.p = node.left, y
+  end
+
+  def transplant(current, transplanted)
+    return nil unless current
+
+    if current.parent.nil?
+      root = transplanted
+    elsif current == current.p.left
+      current.parent.left = transplanted
+    else
+      current.parent.right = transplanted
+    end
+
+    transplanted.parent = current.parent if transplanted
+  end
+
   def search_value(value, start=root)
     if start.nil? || value == start.value
       start
